@@ -11,4 +11,4 @@ phases:
         #- ls 
         #- pwd
         - echo "here we start"
-        - docker-compose up -d
+        - docker-compose --file docker-compose-orginal.1.yml build 
