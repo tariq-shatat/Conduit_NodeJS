@@ -2,5 +2,7 @@ version: 0.2
 phases:
   build:
     commands:
+        - ls 
+        - pwd
         - echo "here we start"
         - docker-compose up -d
