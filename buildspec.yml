@@ -2,7 +2,12 @@ version: 0.2
 phases:
   build:
     commands:
-        - cd ..
+        - ls 
+        - pwd
+        - cd $CODEBUILD_SRC_DIR_frontend_Code
+        - ls 
+        - pwd
+        - cd $CODEBUILD_SRC_DIR_backend_code
         - ls 
         - pwd
         - echo "here we start"
