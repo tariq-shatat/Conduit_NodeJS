@@ -6,7 +6,7 @@ phases:
         #- cd $CODEBUILD_SRC_DIR_backend_code
         - echo "here we start"
         - docker-compose --file docker-compose-orginal.1.yml build 
-        #- docker login -u AWS -p $(aws ecr get-login-password --region eu-central-1) 257795908217.dkr.ecr.eu-central-1.amazonaws.com/
+        - docker login -u AWS -p $(aws ecr get-login-password --region eu-central-1) 257795908217.dkr.ecr.eu-central-1.amazonaws.com/
         - docker tag con-frontend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
         - docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
         - docker tag con-backend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
