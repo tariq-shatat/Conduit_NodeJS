@@ -2,13 +2,13 @@ version: 0.2
 phases:
   build:
     commands:
-        #- ls 
-        #- pwd
         #- cd $CODEBUILD_SRC_DIR_frontend_Code
-        #- ls 
-        #- pwd
         #- cd $CODEBUILD_SRC_DIR_backend_code
-        #- ls 
-        #- pwd
         - echo "here we start"
         - docker-compose --file docker-compose-orginal.1.yml build 
+        - docker tag con-frontend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
+        - docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
+        - docker tag con-backend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
+        - docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
+
+        

@@ -11,7 +11,7 @@ const {Sequelize} = require('sequelize')
 //AMAZON RDS CONNECTION
  const sequelize = new Sequelize('conduit','root','root_password',{
     dialect: 'mysql',
-    host:'terraform-20210530225736671300000001.cal5fr0wl0m2.eu-central-1.rds.amazonaws.com',
+    host:'terraform-20210601204656622100000008.cal5fr0wl0m2.eu-central-1.rds.amazonaws.com',
     logging: false,
     port: 3306
 });
