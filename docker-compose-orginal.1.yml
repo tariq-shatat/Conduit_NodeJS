@@ -1,6 +1,5 @@
-version: '3'
+version: "3"
 services:
-
   #PHP Service
   backend:
     build:
@@ -22,7 +21,7 @@ services:
       context: ./../01
       dockerfile: Dockerfile
       args:
-        REACT_APP_BACKEND_URL: "http://conduit-alb-859681240.eu-central-1.elb.amazonaws.com:49160/api"
+        REACT_APP_BACKEND_URL: "http://conduit-alb-479502675.eu-central-1.elb.amazonaws.com:49160/api"
     image: con-frontend
     container_name: con-frontend
     restart: unless-stopped
