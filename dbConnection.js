@@ -1,22 +1,22 @@
 const {Sequelize} = require('sequelize')
 
 //LOCAL CONNECTION
- /*const sequelize = new Sequelize('conduit','root','root',{
+/* const sequelize = new Sequelize('conduit','root','password',{
     dialect: 'mysql',
-    host:'mysql',
+    host:'localhost',
     logging: false
-}); 
-*/
+}); */
+
 
 //AMAZON RDS CONNECTION
- const sequelize = new Sequelize('conduit','root','root_password',{
+ const sequelize = new Sequelize('conduit',process.env.USER_NAME,process.env.PASSWORD,{
     dialect: 'mysql',
-    host:'terraform-20210604230056912900000001.cal5fr0wl0m2.eu-central-1.rds.amazonaws.com',
+    host:process.env.DB_HOST,
     logging: false,
     port: 3306
 });
- /*
-const sequelize = new Sequelize('d6rk5ijgmvcf6q',process.env.USER_NAME,process.env.PASSWORD,{
+ 
+/*const sequelize = new Sequelize('conduit',process.env.USER_NAME,process.env.PASSWORD,{
     dialect: 'postgres',
     host: process.env.DB_HOST,
     logging: false,
@@ -27,8 +27,8 @@ const sequelize = new Sequelize('d6rk5ijgmvcf6q',process.env.USER_NAME,process.e
             rejectUnauthorized: false // <<<<<<< YOU NEED THIS
         }
     }
-});
-*/
+});*/
+
 const checkConnection =async () => {
     try {
         await sequelize.authenticate();
