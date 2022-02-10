@@ -5,11 +5,20 @@ phases:
         #- cd $CODEBUILD_SRC_DIR_frontend_Code
         #- cd $CODEBUILD_SRC_DIR_backend_code
         - echo "here we start"
-        - docker-compose --file docker-compose-orginal.1.yml build 
-        - docker login -u AWS -p $(aws ecr get-login-password --region eu-central-1) 257795908217.dkr.ecr.eu-central-1.amazonaws.com/
-        - docker tag con-frontend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
-        - docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
-        - docker tag con-backend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
-        - docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
+        #- docker-compose --file docker-compose-orginal.1.yml build 
+        #- docker login -u AWS -p $(aws ecr get-login-password --region eu-central-1) 257795908217.dkr.ecr.eu-central-1.amazonaws.com/
+        #- docker tag con-frontend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
+        #- docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
+        #- docker tag con-backend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
+        #- docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
+       - docker build -t conduit-backend .
+       - docker tag conduit-backend:latest public.ecr.aws/r3e8t5p1/conduit-backend:latest
+       - docker tag conduit-backend:latest public.ecr.aws/r3e8t5p1/conduit-backend:${CODEBUILD_BUILD_NUMBER}
+       - docker push public.ecr.aws/r3e8t5p1/conduit-backend:latest
+       - docker push public.ecr.aws/r3e8t5p1/conduit-backend:${CODEBUILD_BUILD_NUMBER}
+       - aws eks --region us-east-1 update-kubeconfig --name production-eks-cluster
+       - aws sts get-caller-identity
+       - kubectl version
+       - kubectl -n conduit set image deploy/conduit-backend conduit-backend=conduit-backend:${CODEBUILD_BUILD_NUMBER}
 
         
