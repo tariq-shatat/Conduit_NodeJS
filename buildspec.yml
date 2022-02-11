@@ -7,7 +7,7 @@ phases:
         - echo "here we start"
         #- docker-compose --file docker-compose-orginal.1.yml build 
         #- aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
-        - docker login -u AWS -p $(aws ecr get-login-password --region us-east-1)  public.ecr.aws
+        - docker login -u AWS -p $(aws ecr get-login-password --region us-east-1 public.ecr.aws)
         #- docker tag con-frontend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
         #- docker push 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/frontend
         #- docker tag con-backend:latest 257795908217.dkr.ecr.eu-central-1.amazonaws.com/conduit/backend
